@@ -2,9 +2,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror -lcriterion
 TARGET = main
 SRCS = main.c
-TEST_SRCS = $(wildcard tests/*.c)
 OBJS = $(SRCS:.c=.o)
-TEST_OBJS = $(TEST_SRCS:.c=.o)
 
 all: $(TARGET)
 
@@ -17,17 +15,8 @@ clean:
 fclean: clean
 	rm -f $(TARGET)
 
-testrun: $(TARGET)
-	./$(TARGET)
-
-coverage: $(OBJS)
-	$(CC) $(CFLAGS) --coverage -o $(TARGET) $(OBJS)
-	./$(TARGET)
-	gcov $(SRCS)
-
-test: $(TEST_OBJS)
-	$(CC) $(CFLAGS) -o test_runner $(TEST_OBJS)
-	./test_runner
+test_run:
+	tests/test.sh
 
 re: fclean all
 
