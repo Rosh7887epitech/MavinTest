@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror -lcriterion
+CFLAGS = -Wall -Wextra -Werror
 TARGET = main
 SRCS = main.c
 OBJS = $(SRCS:.c=.o)
